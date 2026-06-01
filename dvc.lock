@@ -9,8 +9,8 @@ stages:
       size: 4972
     - path: src/preprocess.py
       hash: md5
-      md5: ac33c0f3c6fbaf95f7c6c38ad05f000a
-      size: 1231
+      md5: ef89d4ab643f26fc8bf20d9b1ad28226
+      size: 2166
     outs:
     - path: data/fruits_clean.csv
       hash: md5
@@ -25,46 +25,46 @@ stages:
       size: 4559
     - path: src/train.py
       hash: md5
-      md5: 7f5964d1fd62d6ed18ff84aad9e02c3c
-      size: 4336
+      md5: cb1e99da1458f21c3c19923db580a779
+      size: 5914
     outs:
-    - path: models/figures/clusters.png
+    - path: Deploiement_ML_DL/models/figures/clusters.png
       hash: md5
       md5: 279dffb6bd66afa5f32ebc9a5554bffc
       size: 26763
-    - path: models/figures/elbow.png
+    - path: Deploiement_ML_DL/models/figures/elbow.png
       hash: md5
       md5: 95b6f214dc19d5a6275b70402b7b99a2
       size: 19574
-    - path: models/figures/silhouette.png
+    - path: Deploiement_ML_DL/models/figures/silhouette.png
       hash: md5
       md5: 739378f9f023442c11d13c9ae3e2622d
       size: 26149
-    - path: models/fruits_clustered.csv
+    - path: Deploiement_ML_DL/models/fruits_clustered.csv
       hash: md5
       md5: e6a9e9fffff34a44753695a73143ec93
       size: 5374
-    - path: models/model.joblib
+    - path: Deploiement_ML_DL/models/model.joblib
       hash: md5
       md5: 1786bb82d19bb7c7ac0137af693d9f96
       size: 168481
   evaluate:
     cmd: python src/evaluate.py
     deps:
+    - path: Deploiement_ML_DL/models/model.joblib
+      hash: md5
+      md5: 1786bb82d19bb7c7ac0137af693d9f96
+      size: 168481
     - path: data/fruits_clean.csv
       hash: md5
       md5: d250d30e2ed0d6eab771fc758bcd96ee
       size: 4559
-    - path: models/model.joblib
-      hash: md5
-      md5: 1786bb82d19bb7c7ac0137af693d9f96
-      size: 168481
     - path: src/evaluate.py
       hash: md5
-      md5: da1a2fbbf8e0f7377a86058688ba378d
-      size: 1490
+      md5: 50ddc0c5276a970ce60f207727049d5d
+      size: 2195
     outs:
-    - path: models/evaluate_metrics.json
+    - path: Deploiement_ML_DL/models/evaluate_metrics.json
       hash: md5
       md5: e028109c242d180edecdc92bf07331f7
       size: 101
@@ -77,12 +77,12 @@ stages:
       size: 4559
     - path: src/generate_evidently_report.py
       hash: md5
-      md5: fd26a6b61b9290e798064577e55f2487
-      size: 647
+      md5: 518923be8e0fc45087a79043f7f41959
+      size: 1167
     outs:
-    - path: models/evidently_report.html
+    - path: Deploiement_ML_DL/models/evidently_report.html
       hash: md5
-      md5: 8689238c9e422a1220af52a310e5a966
+      md5: ee2dc3c8464ceefc187924a22f6fe7a3
       size: 3783690
   shap:
     cmd: python src/xai_shap.py

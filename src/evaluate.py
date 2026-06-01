@@ -13,8 +13,9 @@ from sklearn.metrics import silhouette_score, davies_bouldin_score, accuracy_sco
 
 BASE = Path(__file__).parents[1]
 DATA = BASE / "data" / "fruits_clean.csv"
-MODEL = BASE / "models" / "model.joblib"
-METRICS_OUT = BASE / "models" / "evaluate_metrics.json"
+# Use Deploiement_ML_DL models dir to match training artifacts
+MODEL = BASE / "Deploiement_ML_DL" / "models" / "model.joblib"
+METRICS_OUT = BASE / "Deploiement_ML_DL" / "models" / "evaluate_metrics.json"
 
 
 def evaluate():

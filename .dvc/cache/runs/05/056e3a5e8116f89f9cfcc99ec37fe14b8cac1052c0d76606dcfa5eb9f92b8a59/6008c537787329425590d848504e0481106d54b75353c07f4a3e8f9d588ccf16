@@ -1,0 +1,19 @@
+cmd: python src/evaluate.py
+deps:
+- path: Deploiement_ML_DL/models/model.joblib
+  hash: md5
+  md5: 1786bb82d19bb7c7ac0137af693d9f96
+  size: 168481
+- path: data/fruits_clean.csv
+  hash: md5
+  md5: d250d30e2ed0d6eab771fc758bcd96ee
+  size: 4559
+- path: src/evaluate.py
+  hash: md5
+  md5: 50ddc0c5276a970ce60f207727049d5d
+  size: 2195
+outs:
+- path: Deploiement_ML_DL/models/evaluate_metrics.json
+  hash: md5
+  md5: e028109c242d180edecdc92bf07331f7
+  size: 101

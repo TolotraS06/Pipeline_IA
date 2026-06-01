@@ -1,0 +1,15 @@
+cmd: python src/generate_evidently_report.py
+deps:
+- path: data/fruits_clean.csv
+  hash: md5
+  md5: d250d30e2ed0d6eab771fc758bcd96ee
+  size: 4559
+- path: src/generate_evidently_report.py
+  hash: md5
+  md5: 518923be8e0fc45087a79043f7f41959
+  size: 1167
+outs:
+- path: Deploiement_ML_DL/models/evidently_report.html
+  hash: md5
+  md5: ee2dc3c8464ceefc187924a22f6fe7a3
+  size: 3783690

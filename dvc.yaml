@@ -12,26 +12,26 @@ stages:
     - data/fruits_clean.csv
     - src/train.py
     outs:
-    - models/figures/clusters.png
-    - models/figures/elbow.png
-    - models/figures/silhouette.png
-    - models/fruits_clustered.csv
-    - models/model.joblib
+    - Deploiement_ML_DL/models/figures/clusters.png
+    - Deploiement_ML_DL/models/figures/elbow.png
+    - Deploiement_ML_DL/models/figures/silhouette.png
+    - Deploiement_ML_DL/models/fruits_clustered.csv
+    - Deploiement_ML_DL/models/model.joblib
   evaluate:
     cmd: python src/evaluate.py
     deps:
     - data/fruits_clean.csv
     - src/evaluate.py
-    - models/model.joblib
+    - Deploiement_ML_DL/models/model.joblib
     outs:
-    - models/evaluate_metrics.json
+    - Deploiement_ML_DL/models/evaluate_metrics.json
   report:
     cmd: python src/generate_evidently_report.py
     deps:
     - data/fruits_clean.csv
     - src/generate_evidently_report.py
     outs:
-    - models/evidently_report.html
+    - Deploiement_ML_DL/models/evidently_report.html
   shap:
     cmd: python src/xai_shap.py
     deps:
@@ -39,4 +39,4 @@ stages:
     - src/xai_shap.py
     - models/model.joblib
     outs:
-    - models/figures/shap_summary.png
+    - Deploiement_ML_DL/models/figures/shap_summary.png

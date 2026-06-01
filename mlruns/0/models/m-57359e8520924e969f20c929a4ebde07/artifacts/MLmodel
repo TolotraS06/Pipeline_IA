@@ -1,0 +1,23 @@
+artifact_path: /home/nemos06/project/Unsupervised_learning delpoyement/mlruns/0/models/m-57359e8520924e969f20c929a4ebde07/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.5
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.12.0
+model_id: m-57359e8520924e969f20c929a4ebde07
+model_size_bytes: 158206
+model_uuid: m-57359e8520924e969f20c929a4ebde07
+prompts: null
+run_id: 4d57691ce08e42b685e0beaa0f9187a1
+utc_time_created: '2026-06-01 13:58:31.100789'
