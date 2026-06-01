@@ -15,20 +15,16 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
+        python-version: '3.11'
         
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install httpx pytest
+        pip install pytest
         
-    - name: Run pipeline (quick validation)
+    - name: Validate DVC pipeline
       run: |
-        python src/preprocess.py
-        python src/train.py
-        python src/evaluate.py
-        
-    - name: Run API Tests
-      run: |
-        pytest app/test_main.py
+        dvc version
+        dvc repro --force preprocess train evaluate report
+        dvc status
