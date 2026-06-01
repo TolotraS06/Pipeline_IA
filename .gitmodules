@@ -1,0 +1,3 @@
+[submodule "Deploiement_ML_DL"]
+	path = Deploiement_ML_DL
+	url = https://huggingface.co/spaces/TolotraS06/Deploiement_ML_DL

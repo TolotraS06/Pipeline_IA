@@ -1,0 +1,31 @@
+cmd: .venv/bin/python src/train.py
+deps:
+- path: data/fruits_clean.csv
+  hash: md5
+  md5: d250d30e2ed0d6eab771fc758bcd96ee
+  size: 4559
+- path: src/train.py
+  hash: md5
+  md5: 7f5964d1fd62d6ed18ff84aad9e02c3c
+  size: 4336
+outs:
+- path: models/figures/clusters.png
+  hash: md5
+  md5: 279dffb6bd66afa5f32ebc9a5554bffc
+  size: 26763
+- path: models/figures/elbow.png
+  hash: md5
+  md5: 95b6f214dc19d5a6275b70402b7b99a2
+  size: 19574
+- path: models/figures/silhouette.png
+  hash: md5
+  md5: 739378f9f023442c11d13c9ae3e2622d
+  size: 26149
+- path: models/fruits_clustered.csv
+  hash: md5
+  md5: e6a9e9fffff34a44753695a73143ec93
+  size: 5374
+- path: models/model.joblib
+  hash: md5
+  md5: 1786bb82d19bb7c7ac0137af693d9f96
+  size: 168481

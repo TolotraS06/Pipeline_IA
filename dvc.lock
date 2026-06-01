@@ -1,0 +1,106 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: .venv/bin/python src/preprocess.py
+    deps:
+    - path: data/fruits.csv
+      hash: md5
+      md5: 83dd13f9d38dca5d4d6203d7d13e5c21
+      size: 4972
+    - path: src/preprocess.py
+      hash: md5
+      md5: ac33c0f3c6fbaf95f7c6c38ad05f000a
+      size: 1231
+    outs:
+    - path: data/fruits_clean.csv
+      hash: md5
+      md5: d250d30e2ed0d6eab771fc758bcd96ee
+      size: 4559
+  train:
+    cmd: .venv/bin/python src/train.py
+    deps:
+    - path: data/fruits_clean.csv
+      hash: md5
+      md5: d250d30e2ed0d6eab771fc758bcd96ee
+      size: 4559
+    - path: src/train.py
+      hash: md5
+      md5: 7f5964d1fd62d6ed18ff84aad9e02c3c
+      size: 4336
+    outs:
+    - path: models/figures/clusters.png
+      hash: md5
+      md5: 279dffb6bd66afa5f32ebc9a5554bffc
+      size: 26763
+    - path: models/figures/elbow.png
+      hash: md5
+      md5: 95b6f214dc19d5a6275b70402b7b99a2
+      size: 19574
+    - path: models/figures/silhouette.png
+      hash: md5
+      md5: 739378f9f023442c11d13c9ae3e2622d
+      size: 26149
+    - path: models/fruits_clustered.csv
+      hash: md5
+      md5: e6a9e9fffff34a44753695a73143ec93
+      size: 5374
+    - path: models/model.joblib
+      hash: md5
+      md5: 1786bb82d19bb7c7ac0137af693d9f96
+      size: 168481
+  evaluate:
+    cmd: .venv/bin/python src/evaluate.py
+    deps:
+    - path: data/fruits_clean.csv
+      hash: md5
+      md5: d250d30e2ed0d6eab771fc758bcd96ee
+      size: 4559
+    - path: models/model.joblib
+      hash: md5
+      md5: 1786bb82d19bb7c7ac0137af693d9f96
+      size: 168481
+    - path: src/evaluate.py
+      hash: md5
+      md5: da1a2fbbf8e0f7377a86058688ba378d
+      size: 1490
+    outs:
+    - path: models/evaluate_metrics.json
+      hash: md5
+      md5: e028109c242d180edecdc92bf07331f7
+      size: 101
+  report:
+    cmd: .venv/bin/python src/generate_evidently_report.py
+    deps:
+    - path: data/fruits_clean.csv
+      hash: md5
+      md5: d250d30e2ed0d6eab771fc758bcd96ee
+      size: 4559
+    - path: src/generate_evidently_report.py
+      hash: md5
+      md5: fd26a6b61b9290e798064577e55f2487
+      size: 647
+    outs:
+    - path: models/evidently_report.html
+      hash: md5
+      md5: 8689238c9e422a1220af52a310e5a966
+      size: 3783690
+  shap:
+    cmd: .venv/bin/python src/xai_shap.py
+    deps:
+    - path: data/fruits_clean.csv
+      hash: md5
+      md5: d250d30e2ed0d6eab771fc758bcd96ee
+      size: 4559
+    - path: models/model.joblib
+      hash: md5
+      md5: 1786bb82d19bb7c7ac0137af693d9f96
+      size: 168481
+    - path: src/xai_shap.py
+      hash: md5
+      md5: 5a8bfb2ce3ec429cb206496562911d12
+      size: 2843
+    outs:
+    - path: models/figures/shap_summary.png
+      hash: md5
+      md5: b2e5f943e70e4c1a871d16212a4273b0
+      size: 23826

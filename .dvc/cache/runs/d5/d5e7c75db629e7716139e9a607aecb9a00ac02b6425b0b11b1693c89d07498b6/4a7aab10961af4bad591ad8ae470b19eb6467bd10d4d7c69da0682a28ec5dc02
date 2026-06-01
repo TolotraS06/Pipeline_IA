@@ -1,0 +1,19 @@
+cmd: .venv/bin/python src/xai_shap.py
+deps:
+- path: data/fruits_clean.csv
+  hash: md5
+  md5: d250d30e2ed0d6eab771fc758bcd96ee
+  size: 4559
+- path: models/model.joblib
+  hash: md5
+  md5: 1786bb82d19bb7c7ac0137af693d9f96
+  size: 168481
+- path: src/xai_shap.py
+  hash: md5
+  md5: 5a8bfb2ce3ec429cb206496562911d12
+  size: 2843
+outs:
+- path: models/figures/shap_summary.png
+  hash: md5
+  md5: b2e5f943e70e4c1a871d16212a4273b0
+  size: 23826

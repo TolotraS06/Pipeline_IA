@@ -1,0 +1,19 @@
+cmd: .venv/bin/python src/evaluate.py
+deps:
+- path: data/fruits_clean.csv
+  hash: md5
+  md5: d250d30e2ed0d6eab771fc758bcd96ee
+  size: 4559
+- path: models/model.joblib
+  hash: md5
+  md5: 1786bb82d19bb7c7ac0137af693d9f96
+  size: 168481
+- path: src/evaluate.py
+  hash: md5
+  md5: da1a2fbbf8e0f7377a86058688ba378d
+  size: 1490
+outs:
+- path: models/evaluate_metrics.json
+  hash: md5
+  md5: e028109c242d180edecdc92bf07331f7
+  size: 101

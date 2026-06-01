@@ -1,0 +1,15 @@
+cmd: .venv/bin/python ml_pipeline/preprocess.py
+deps:
+- path: data/fruits.csv
+  hash: md5
+  md5: 83dd13f9d38dca5d4d6203d7d13e5c21
+  size: 4972
+- path: ml_pipeline/preprocess.py
+  hash: md5
+  md5: ac33c0f3c6fbaf95f7c6c38ad05f000a
+  size: 1231
+outs:
+- path: data/fruits_clean.csv
+  hash: md5
+  md5: d250d30e2ed0d6eab771fc758bcd96ee
+  size: 4559
