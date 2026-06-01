@@ -28,6 +28,7 @@ jobs:
 
     - name: Validate DVC pipeline
       run: |
+        source .venv/bin/activate
         dvc version
         dvc repro --force preprocess train evaluate report
         dvc status
