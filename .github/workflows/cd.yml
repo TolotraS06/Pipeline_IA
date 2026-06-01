@@ -10,8 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0 # Récupère tout l'historique, utile pour Git push
-
+        fetch-depth: 0 
     - name: Deploy ML_DL to Hugging Face
       env:
         HF_TOKEN: ${{ secrets.HF_TOKEN }}
@@ -19,19 +18,14 @@ jobs:
       run: |
         cd Deploiement_ML_DL
         
-        # Initialisation propre de Git
         git init
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
         
-        # Configuration de la branche par défaut pour éviter le warning Git 3.0
         git config --global init.defaultBranch main
         git checkout -b main
         
-        # Ajout des fichiers
         git add .
-        
-        # Le FIX : On vérifie s'il y a des fichiers à commit avant de lancer la commande
         if [ -n "$(git status --porcelain)" ]; then
           git commit -m "Deploy app to Hugging Face"
           git remote add origin "https://__token__:${HF_TOKEN}@huggingface.co/${HF_REPO}"
