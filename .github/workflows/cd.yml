@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # Récupère tout l'historique, utile pour Git push
 
     - name: Deploy ML_DL to Hugging Face
       env:
@@ -16,11 +18,24 @@ jobs:
         HF_REPO: ${{ secrets.HF_REPO }}
       run: |
         cd Deploiement_ML_DL
+        
+        # Initialisation propre de Git
         git init
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git remote add origin "https://__token__:${HF_TOKEN}@huggingface.co/${HF_REPO}.git"
+        
+        # Configuration de la branche par défaut pour éviter le warning Git 3.0
+        git config --global init.defaultBranch main
         git checkout -b main
+        
+        # Ajout des fichiers
         git add .
-        git commit -m "Deploy app to Hugging Face"
-        git push --force origin main
+        
+        # Le FIX : On vérifie s'il y a des fichiers à commit avant de lancer la commande
+        if [ -n "$(git status --porcelain)" ]; then
+          git commit -m "Deploy app to Hugging Face"
+          git remote add origin "https://__token__:${HF_TOKEN}@huggingface.co/${HF_REPO}"
+          git push --force origin main
+        else
+          echo "Aucun changement détecté dans Deploiement_ML_DL. Rien à déployer."
+        fi
