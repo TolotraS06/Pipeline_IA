@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   preprocess:
-    cmd: .venv/bin/python src/preprocess.py
+    cmd: python src/preprocess.py
     deps:
     - path: data/fruits.csv
       hash: md5
@@ -17,7 +17,7 @@ stages:
       md5: d250d30e2ed0d6eab771fc758bcd96ee
       size: 4559
   train:
-    cmd: .venv/bin/python src/train.py
+    cmd: python src/train.py
     deps:
     - path: data/fruits_clean.csv
       hash: md5
@@ -49,7 +49,7 @@ stages:
       md5: 1786bb82d19bb7c7ac0137af693d9f96
       size: 168481
   evaluate:
-    cmd: .venv/bin/python src/evaluate.py
+    cmd: python src/evaluate.py
     deps:
     - path: data/fruits_clean.csv
       hash: md5
@@ -69,7 +69,7 @@ stages:
       md5: e028109c242d180edecdc92bf07331f7
       size: 101
   report:
-    cmd: .venv/bin/python src/generate_evidently_report.py
+    cmd: python src/generate_evidently_report.py
     deps:
     - path: data/fruits_clean.csv
       hash: md5
@@ -85,7 +85,7 @@ stages:
       md5: 8689238c9e422a1220af52a310e5a966
       size: 3783690
   shap:
-    cmd: .venv/bin/python src/xai_shap.py
+    cmd: python src/xai_shap.py
     deps:
     - path: data/fruits_clean.csv
       hash: md5

@@ -1,13 +1,13 @@
 stages:
   preprocess:
-    cmd: .venv/bin/python src/preprocess.py
+    cmd: python src/preprocess.py
     deps:
     - data/fruits.csv
     - src/preprocess.py
     outs:
     - data/fruits_clean.csv
   train:
-    cmd: .venv/bin/python src/train.py
+    cmd: python src/train.py
     deps:
     - data/fruits_clean.csv
     - src/train.py
@@ -18,7 +18,7 @@ stages:
     - models/fruits_clustered.csv
     - models/model.joblib
   evaluate:
-    cmd: .venv/bin/python src/evaluate.py
+    cmd: python src/evaluate.py
     deps:
     - data/fruits_clean.csv
     - src/evaluate.py
@@ -26,14 +26,14 @@ stages:
     outs:
     - models/evaluate_metrics.json
   report:
-    cmd: .venv/bin/python src/generate_evidently_report.py
+    cmd: python src/generate_evidently_report.py
     deps:
     - data/fruits_clean.csv
     - src/generate_evidently_report.py
     outs:
     - models/evidently_report.html
   shap:
-    cmd: .venv/bin/python src/xai_shap.py
+    cmd: python src/xai_shap.py
     deps:
     - data/fruits_clean.csv
     - src/xai_shap.py
